@@ -1,0 +1,11 @@
+
+<p>
+<%= @entry.body %><br/>
+<%= @entry.mood %><br/>
+<%= @entry.visibility %><br/>
+<em><%= @entry.created_at %></em>
+</p>
+
+<% if logged_in? and current_user == @entry.user %>
+	<%= link_to "Edit", edit_entry_path(@entry) %>
+<% end %>

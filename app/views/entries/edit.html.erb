@@ -1,0 +1,7 @@
+
+<%= simple_form_for [@user, @entry] do |f| %>
+	<%= f.input :body %>
+	<%= f.input :mood, collection: [ "Good", "OK", "Bad"] %>
+	<%= f.input :visibility, collection: [ "Public", "Anonymous", "Private"] %>
+	<%= f.submit %>
+<% end %>

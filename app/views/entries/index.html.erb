@@ -1,0 +1,27 @@
+
+
+<% unless logged_in? %>
+	<h3>Welcome to Brain Dump</h3>
+	<p>The place to record your thoughts</p>
+	<ul>
+		<li>Private, anonymous or public posting</li>
+		<li>Track daily progress through mood recording</li>
+		<li>See your progress and remember the feelings you had along the way</li>
+	</ul>
+	<%= link_to "Sign up", new_user_path %>
+<% else %>
+
+<% @entries.each do |entry| %>
+	<% if logged_in? and current_user == entry.user %>
+		<%= link_to entry_path(entry) do %>
+			<p>
+				<%= entry.body %><br/>
+				<em><%= entry.created_at %></em>
+			</p>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= link_to "New entry", new_user_entry_path(current_user.id) %>
+
+<% end %>

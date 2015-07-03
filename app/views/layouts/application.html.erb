@@ -8,6 +8,27 @@
 </head>
 <body>
 
+
+<% if logged_in? %>
+	<%= current_user.email %>
+	<%= link_to "Me", root_path %>
+	<%= link_to "New entry", new_user_entry_path(current_user.id) %>
+	<%= link_to "Log out", session_path, method: :delete %>
+<% else %>
+	<%= link_to "Log in", new_session_path %>
+	<%= link_to "Sign up", new_user_path %>
+<% end %>
+
+<% flash.each do |key, value| %>
+	<div class="<%= key %>">
+		<div class="wrapper">
+			<p><%= value %></p>
+		</div>
+	</div>
+<% end %>
+
+
+
 <%= yield %>
 
 </body>
